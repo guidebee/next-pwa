@@ -1,5 +1,5 @@
 {
-  "name": "@guidebee/next-pwa",
+  "name": "nextjs-pwa",
   "version": "1.0.0",
   "type": "module",
   "description": "PWA for Next.js, powered by Workbox.",
