@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "description": "PWA for Next.js, powered by Workbox.",
-  "repository": "https://github.com/DuCanhGH/next-pwa",
-  "author": "ShadowWalker <w@weiw.io>, DuCanhGH",
+  "repository": "https://github.com/guidebee/next-pwa",
+  "author": "ShadowWalker <w@weiw.io>, DuCanhGH, James Shen",
   "license": "MIT",
   "private": false,
   "files": [
