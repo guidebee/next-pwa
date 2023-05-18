@@ -191,11 +191,11 @@ const withPWAInit = (
             logger.info(`  window.workbox.register()`);
             if (
               !tsConfigJSON?.compilerOptions?.types?.includes(
-                '@guidebee/next-pwa/workbox'
+                'nextjs-pwa/workbox'
               )
             ) {
               logger.info(
-                'You may also want to add @guidebee/next-pwa/workbox to compilerOptions.types in your tsconfig.json/jsconfig.json.'
+                'You may also want to add nextjs-pwa/workbox to compilerOptions.types in your tsconfig.json/jsconfig.json.'
               );
             }
           }

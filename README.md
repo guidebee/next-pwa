@@ -2,8 +2,8 @@
 
 This plugin is powered by [Workbox](https://developer.chrome.com/docs/workbox/) and other good stuff.
 
-[![Build Size](https://img.shields.io/bundlephobia/minzip/@guidebee/next-pwa?label=Bundle%20size&style=flat&color=success)](https://bundlephobia.com/result?p=@guidebee/next-pwa)
-[![Version](https://img.shields.io/npm/v/@guidebee/next-pwa?style=flat&color=success)](https://www.npmjs.com/package/@guidebee/next-pwa)
+[![Build Size](https://img.shields.io/bundlephobia/minzip/nextjs-pwa?label=Bundle%20size&style=flat&color=success)](https://bundlephobia.com/result?p=nextjs-pwa)
+[![Version](https://img.shields.io/npm/v/nextjs-pwa?style=flat&color=success)](https://www.npmjs.com/package/nextjs-pwa)
 
 👋 Share your awesome PWA project 👉 [here](https://github.com/shadowwalker/next-pwa/discussions/206)
 
@@ -31,7 +31,7 @@ This plugin is powered by [Workbox](https://developer.chrome.com/docs/workbox/) 
 >
 > **NOTE 2** - If you encounter the error `TypeError: Cannot read property **'javascript' of undefined**` during build, [please consider upgrading to Webpack 5 in `next.config.js`](https://github.com/shadowwalker/next-pwa/issues/198#issuecomment-817205700).
 >
-> **NOTE 3** - `@guidebee/next-pwa` currently doesn't support Turbopack, but I will start working on it as soon as we get our hands on Turbopack. It may not use Workbox anymore depending on [Workbox's maintain status](https://github.com/GoogleChrome/workbox/issues/3149), however.
+> **NOTE 3** - `nextjs-pwa` currently doesn't support Turbopack, but I will start working on it as soon as we get our hands on Turbopack. It may not use Workbox anymore depending on [Workbox's maintain status](https://github.com/GoogleChrome/workbox/issues/3149), however.
 
 ---
 

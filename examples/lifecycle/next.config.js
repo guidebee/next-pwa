@@ -1,4 +1,4 @@
-const withPWA = require("@guidebee/next-pwa").default({
+const withPWA = require("nextjs-pwa").default({
   dest: "public",
   register: false,
   workboxOptions: {

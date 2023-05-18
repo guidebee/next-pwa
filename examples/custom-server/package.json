@@ -10,7 +10,7 @@
     "start": "cross-env NODE_ENV=production node ./dist/server.js"
   },
   "dependencies": {
-    "@guidebee/next-pwa": "file:../..",
+    "nextjs-pwa": "file:../..",
     "@fastify/compress": "6.2.1",
     "cross-env": "7.0.3",
     "fastify": "4.17.0",
