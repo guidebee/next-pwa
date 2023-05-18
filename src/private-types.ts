@@ -1,5 +1,5 @@
-import type { WebpackInjectManifestOptions } from "workbox-build";
-import type { GenerateSWConfig } from "workbox-webpack-plugin";
+import type { WebpackInjectManifestOptions } from 'workbox-build';
+import type { GenerateSWConfig } from 'workbox-webpack-plugin';
 
 type Impossible<K extends keyof any> = { [P in K]?: never };
 
@@ -8,19 +8,19 @@ type GenerateSWOverrideJSDoc = {
    * Note: This plugin changes the default to `true`.
    * @default true ("next-pwa")
    */
-  skipWaiting?: GenerateSWConfig["skipWaiting"];
+  skipWaiting?: GenerateSWConfig['skipWaiting'];
   /**
    * Note: This plugin changes the default to `true`.
    * @default true ("next-pwa")
    */
-  clientsClaim?: GenerateSWConfig["clientsClaim"];
+  clientsClaim?: GenerateSWConfig['clientsClaim'];
   /**
    * Note: This plugin changes the default to `true`.
    * @default true ("next-pwa")
    */
-  cleanUpOutdatedCaches?: GenerateSWConfig["cleanupOutdatedCaches"];
+  cleanUpOutdatedCaches?: GenerateSWConfig['cleanupOutdatedCaches'];
   /** Note: This plugin changes the default to `[]`. */
-  ignoreURLParametersMatching?: GenerateSWConfig["ignoreURLParametersMatching"];
+  ignoreURLParametersMatching?: GenerateSWConfig['ignoreURLParametersMatching'];
 };
 
 export type SharedWorkboxOptionsKeys = keyof GenerateSWConfig &
@@ -28,7 +28,7 @@ export type SharedWorkboxOptionsKeys = keyof GenerateSWConfig &
 
 export type BlockedSharedWorkboxOptionsKeys = Extract<
   SharedWorkboxOptionsKeys,
-  "exclude"
+  'exclude'
 >;
 
 export type WorkboxTypes = {
@@ -36,13 +36,13 @@ export type WorkboxTypes = {
     Impossible<
       Exclude<keyof WebpackInjectManifestOptions, SharedWorkboxOptionsKeys>
     > &
-      GenerateSWConfig &
-      GenerateSWOverrideJSDoc,
+    GenerateSWConfig &
+    GenerateSWOverrideJSDoc,
     BlockedSharedWorkboxOptionsKeys
   >;
   InjectManifest: Omit<
     Impossible<Exclude<keyof GenerateSWConfig, SharedWorkboxOptionsKeys>> &
-      WebpackInjectManifestOptions,
+    WebpackInjectManifestOptions,
     BlockedSharedWorkboxOptionsKeys
   >;
 };

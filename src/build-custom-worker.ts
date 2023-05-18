@@ -1,39 +1,39 @@
-import fs from "node:fs";
-import { createRequire } from "node:module";
-import path from "node:path";
+import fs from 'node:fs';
+import { createRequire } from 'node:module';
+import path from 'node:path';
 
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import TerserPlugin from "terser-webpack-plugin";
-import type { TsConfigJson as TSConfigJSON } from "type-fest";
-import { addPathAliasesToSWC, logger } from "utils";
-import type { Configuration } from "webpack";
-import webpack from "webpack";
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import type { TsConfigJson as TSConfigJSON } from 'type-fest';
+import type { Configuration } from 'webpack';
+import webpack from 'webpack';
 
-import swcRc from "./.swcrc.json";
+import swcRc from './.swcrc.json';
+import { addPathAliasesToSWC, logger } from './utils/index.js';
 
 const require = createRequire(import.meta.url);
 
 export const buildCustomWorker = ({
-  id,
-  baseDir,
-  customWorkerDir,
-  destDir,
-  plugins,
-  tsconfig,
-  minify,
-}: {
+                                    id,
+                                    baseDir,
+                                    customWorkerDir,
+                                    destDir,
+                                    plugins,
+                                    tsconfig,
+                                    minify
+                                  }: {
   id: string;
   baseDir: string;
   customWorkerDir: string;
   destDir: string;
-  plugins: Configuration["plugins"];
+  plugins: Configuration['plugins'];
   tsconfig: TSConfigJSON | undefined;
   minify: boolean;
 }) => {
-  let workerDir = "";
+  let workerDir = '';
 
   const rootWorkerDir = path.join(baseDir, customWorkerDir);
-  const srcWorkerDir = path.join(baseDir, "src", customWorkerDir);
+  const srcWorkerDir = path.join(baseDir, 'src', customWorkerDir);
 
   if (fs.existsSync(rootWorkerDir)) {
     workerDir = rootWorkerDir;
@@ -44,7 +44,7 @@ export const buildCustomWorker = ({
   if (!workerDir) return;
 
   const name = `worker-${id}.js`;
-  const customWorkerEntries = ["ts", "js"]
+  const customWorkerEntries = ['ts', 'js']
     .map((ext) => path.join(workerDir, `index.${ext}`))
     .filter((entry) => fs.existsSync(entry));
 
@@ -53,7 +53,7 @@ export const buildCustomWorker = ({
   if (customWorkerEntries.length > 1) {
     logger.warn(
       `WARNING: More than one custom worker found (${customWorkerEntries.join(
-        ","
+        ','
       )}), a custom worker will not be built.`
     );
     return;
@@ -66,7 +66,7 @@ export const buildCustomWorker = ({
   if (tsconfig && tsconfig.compilerOptions && tsconfig.compilerOptions.paths) {
     addPathAliasesToSWC(
       swcRc,
-      path.join(baseDir, tsconfig.compilerOptions.baseUrl ?? "."),
+      path.join(baseDir, tsconfig.compilerOptions.baseUrl ?? '.'),
       tsconfig.compilerOptions.paths
     );
   }
@@ -74,19 +74,19 @@ export const buildCustomWorker = ({
   if (tsconfig && tsconfig.compilerOptions && tsconfig.compilerOptions.paths) {
     addPathAliasesToSWC(
       swcRc,
-      path.join(baseDir, tsconfig.compilerOptions.baseUrl ?? "."),
+      path.join(baseDir, tsconfig.compilerOptions.baseUrl ?? '.'),
       tsconfig.compilerOptions.paths
     );
   }
 
   webpack({
-    mode: minify ? "production" : "development",
-    target: "webworker",
+    mode: minify ? 'production' : 'development',
+    target: 'webworker',
     entry: {
-      main: customWorkerEntry,
+      main: customWorkerEntry
     },
     resolve: {
-      extensions: [".ts", ".js"],
+      extensions: ['.ts', '.js'],
       fallback: {
         module: false,
         dgram: false,
@@ -100,13 +100,13 @@ export const buildCustomWorker = ({
         net: false,
         tls: false,
         zlib: false,
-        child_process: false,
-      },
+        child_process: false
+      }
     },
     resolveLoader: {
       alias: {
-        "swc-loader": require.resolve("swc-loader"),
-      },
+        'swc-loader': require.resolve('swc-loader')
+      }
     },
     module: {
       rules: [
@@ -114,33 +114,33 @@ export const buildCustomWorker = ({
           test: /\.(t|j)s$/i,
           use: [
             {
-              loader: "swc-loader",
-              options: swcRc,
-            },
-          ],
-        },
-      ],
+              loader: 'swc-loader',
+              options: swcRc
+            }
+          ]
+        }
+      ]
     },
     output: {
       path: destDir,
-      filename: name,
+      filename: name
     },
     plugins: (
       [
         new CleanWebpackPlugin({
           cleanOnceBeforeBuildPatterns: [
-            path.join(destDir, "worker-*.js"),
-            path.join(destDir, "worker-*.js.map"),
-          ],
-        }),
-      ] as NonNullable<Configuration["plugins"]>
+            path.join(destDir, 'worker-*.js'),
+            path.join(destDir, 'worker-*.js.map')
+          ]
+        })
+      ] as NonNullable<Configuration['plugins']>
     ).concat(plugins ?? []),
     optimization: minify
       ? {
-          minimize: true,
-          minimizer: [new TerserPlugin()],
-        }
-      : undefined,
+        minimize: true,
+        minimizer: [new TerserPlugin()]
+      }
+      : undefined
   }).run((error, status) => {
     if (error || status?.hasErrors()) {
       logger.error(`Failed to build custom worker.`);

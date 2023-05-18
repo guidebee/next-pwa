@@ -1,20 +1,19 @@
-import path from "node:path";
+import path from 'node:path';
 
-import { logger } from "utils";
-
-import type { FallbackRoutes } from "../types.js";
+import type { FallbackRoutes } from '../types.js';
+import { logger } from '../utils/index.js';
 
 export const getFallbackEnvs = ({
-  fallbacks,
-  id,
-}: {
+                                  fallbacks,
+                                  id
+                                }: {
   fallbacks: FallbackRoutes;
   id: string;
 }) => {
   let data = fallbacks.data;
 
-  if (data && data.endsWith(".json")) {
-    data = path.posix.join("/_next/data", id, data);
+  if (data && data.endsWith('.json')) {
+    data = path.posix.join('/_next/data', id, data);
   }
 
   const envs = {
@@ -23,13 +22,13 @@ export const getFallbackEnvs = ({
     __PWA_FALLBACK_AUDIO__: fallbacks.audio || false,
     __PWA_FALLBACK_VIDEO__: fallbacks.video || false,
     __PWA_FALLBACK_FONT__: fallbacks.font || false,
-    __PWA_FALLBACK_DATA__: data || false,
+    __PWA_FALLBACK_DATA__: data || false
   };
 
   if (Object.values(envs).filter((v) => !!v).length === 0) return;
 
   logger.info(
-    "This app will fallback to these precached routes when fetching from cache or network fails:"
+    'This app will fallback to these precached routes when fetching from cache or network fails:'
   );
 
   if (envs.__PWA_FALLBACK_DOCUMENT__) {

@@ -6,21 +6,21 @@ self.fallback = async (request) => {
     image: process.env.__PWA_FALLBACK_IMAGE__,
     audio: process.env.__PWA_FALLBACK_AUDIO__,
     video: process.env.__PWA_FALLBACK_VIDEO__,
-    font: process.env.__PWA_FALLBACK_FONT__,
+    font: process.env.__PWA_FALLBACK_FONT__
   };
   const fallbackResponse = fallbackUrl[destination];
   if (fallbackResponse) {
     return caches.match(fallbackResponse, {
-      ignoreSearch: true,
+      ignoreSearch: true
     });
   }
   if (
-    destination === "" &&
+    destination === '' &&
     process.env.__PWA_FALLBACK_DATA__ &&
     url.match(/\/_next\/data\/.+\/.+\.json$/i)
   ) {
     return caches.match(process.env.__PWA_FALLBACK_DATA__, {
-      ignoreSearch: true,
+      ignoreSearch: true
     });
   }
   return Response.error();

@@ -5,11 +5,11 @@
 > If you are new to `React` or `Next.js`, you may want to checkout [learn React](https://beta.reactjs.org/learn), [learn Next.js](https://nextjs.org/learn/basics/create-nextjs-app) and [Next.js documentation](https://nextjs.org/docs/getting-started) first. Then start from [a simple example (you can use `create-next-app` on these examples, fyi)](https://github.com/DuCanhGH/next-pwa/tree/master/examples/basic) or [the progressive-web-app example in Next.js's repository](https://github.com/vercel/next.js/tree/canary/examples/progressive-web-app).
 
 ```bash
-npm i @ducanh2912/next-pwa
+npm i @guidebee/next-pwa
 # or
-# yarn add @ducanh2912/next-pwa
+# yarn add @guidebee/next-pwa
 # or
-# pnpm add @ducanh2912/next-pwa
+# pnpm add @guidebee/next-pwa
 ```
 
 ## Basic usage
@@ -19,7 +19,7 @@ npm i @ducanh2912/next-pwa
 Update or create your `next.config.js` with
 
 ```js
-const withPWA = require("@ducanh2912/next-pwa").default({
+const withPWA = require("@guidebee/next-pwa").default({
   dest: "public",
 });
 
@@ -31,7 +31,7 @@ module.exports = withPWA({
 or if you prefer ESM:
 
 ```js
-import withPWAInit from "@ducanh2912/next-pwa";
+import withPWAInit from "@guidebee/next-pwa";
 
 const withPWA = withPWAInit({
   dest: "public",
@@ -246,7 +246,7 @@ You can also setup `precacheFallback.fallbackURL` in your [runtimeCaching config
 There are options you can use to customize the behavior of this plugin:
 
 ```javascript
-const withPWA = require("@ducanh2912/next-pwa").default({
+const withPWA = require("@guidebee/next-pwa").default({
   dest: "public",
   // disable: process.env.NODE_ENV === "development",
   // register: true,
@@ -264,7 +264,7 @@ module.exports = withPWA({
 or if you prefer ESM:
 
 ```javascript
-import withPWAInit from "@ducanh2912/next-pwa";
+import withPWAInit from "@guidebee/next-pwa";
 
 const withPWA = withPWAInit({
   dest: "public",
@@ -296,7 +296,7 @@ See [PluginOptions](/packages/next-pwa/src/types.ts?plain=1#L5)
 There is a chance you may want to have your own runtime caching rules. Please feel free to copy the default `cache.ts` file and customize the rules as you like. Don't forget to change your `withPWAInit` config in `next.config.js` like so:
 
 ```js
-import withPWAInit from "@ducanh2912/next-pwa";
+import withPWAInit from "@guidebee/next-pwa";
 
 const withPWA = withPWAInit({
   // your other options,

@@ -1,6 +1,6 @@
-import type { GenerateSWConfig } from "workbox-webpack-plugin";
+import type { GenerateSWConfig } from 'workbox-webpack-plugin';
 
-import type { WorkboxTypes } from "./private-types.js";
+import type { WorkboxTypes } from './private-types.js';
 
 export interface PluginOptions {
   /**
@@ -117,7 +117,7 @@ export interface PluginOptions {
    *   [];
    *   ```
    */
-  buildExcludes?: GenerateSWConfig["exclude"];
+  buildExcludes?: GenerateSWConfig['exclude'];
   /**
    * Config precached routes to fallback when both cache and network are not
    * available to serve resources. If you just need a offline fallback page,

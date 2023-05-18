@@ -1,140 +1,140 @@
-import type { RuntimeCaching } from "workbox-build";
+import type { RuntimeCaching } from 'workbox-build';
 
 // Workbox RuntimeCaching config: https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.RuntimeCachingEntry
 const defaultCache: RuntimeCaching[] = [
   {
     urlPattern: /^https:\/\/fonts\.(?:gstatic)\.com\/.*/i,
-    handler: "CacheFirst",
+    handler: 'CacheFirst',
     options: {
-      cacheName: "google-fonts-webfonts",
+      cacheName: 'google-fonts-webfonts',
       expiration: {
         maxEntries: 4,
-        maxAgeSeconds: 365 * 24 * 60 * 60, // 365 days
-      },
-    },
+        maxAgeSeconds: 365 * 24 * 60 * 60 // 365 days
+      }
+    }
   },
   {
     urlPattern: /^https:\/\/fonts\.(?:googleapis)\.com\/.*/i,
-    handler: "StaleWhileRevalidate",
+    handler: 'StaleWhileRevalidate',
     options: {
-      cacheName: "google-fonts-stylesheets",
+      cacheName: 'google-fonts-stylesheets',
       expiration: {
         maxEntries: 4,
-        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
-      },
-    },
+        maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+      }
+    }
   },
   {
     urlPattern: /\.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,
-    handler: "StaleWhileRevalidate",
+    handler: 'StaleWhileRevalidate',
     options: {
-      cacheName: "static-font-assets",
+      cacheName: 'static-font-assets',
       expiration: {
         maxEntries: 4,
-        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
-      },
-    },
+        maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+      }
+    }
   },
   {
     urlPattern: /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
-    handler: "StaleWhileRevalidate",
+    handler: 'StaleWhileRevalidate',
     options: {
-      cacheName: "static-image-assets",
+      cacheName: 'static-image-assets',
       expiration: {
         maxEntries: 64,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
-      },
-    },
+        maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+      }
+    }
   },
   {
     urlPattern: /\/_next\/static.+\.js$/i,
-    handler: "CacheFirst",
+    handler: 'CacheFirst',
     options: {
-      cacheName: "next-static-js-assets",
+      cacheName: 'next-static-js-assets',
       expiration: {
         maxEntries: 64,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
-    },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
+    }
   },
   {
     urlPattern: /\/_next\/image\?url=.+$/i,
-    handler: "StaleWhileRevalidate",
+    handler: 'StaleWhileRevalidate',
     options: {
-      cacheName: "next-image",
+      cacheName: 'next-image',
       expiration: {
         maxEntries: 64,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
-    },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
+    }
   },
   {
     urlPattern: /\.(?:mp3|wav|ogg)$/i,
-    handler: "CacheFirst",
+    handler: 'CacheFirst',
     options: {
       rangeRequests: true,
-      cacheName: "static-audio-assets",
+      cacheName: 'static-audio-assets',
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
-    },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
+    }
   },
   {
     urlPattern: /\.(?:mp4)$/i,
-    handler: "CacheFirst",
+    handler: 'CacheFirst',
     options: {
       rangeRequests: true,
-      cacheName: "static-video-assets",
+      cacheName: 'static-video-assets',
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
-    },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
+    }
   },
   {
     urlPattern: /\.(?:js)$/i,
-    handler: "StaleWhileRevalidate",
+    handler: 'StaleWhileRevalidate',
     options: {
-      cacheName: "static-js-assets",
+      cacheName: 'static-js-assets',
       expiration: {
         maxEntries: 48,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
-    },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
+    }
   },
   {
     urlPattern: /\.(?:css|less)$/i,
-    handler: "StaleWhileRevalidate",
+    handler: 'StaleWhileRevalidate',
     options: {
-      cacheName: "static-style-assets",
+      cacheName: 'static-style-assets',
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
-    },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
+    }
   },
   {
     urlPattern: /\/_next\/data\/.+\/.+\.json$/i,
-    handler: "StaleWhileRevalidate",
+    handler: 'StaleWhileRevalidate',
     options: {
-      cacheName: "next-data",
+      cacheName: 'next-data',
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
-    },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
+    }
   },
   {
     urlPattern: /\.(?:json|xml|csv)$/i,
-    handler: "NetworkFirst",
+    handler: 'NetworkFirst',
     options: {
-      cacheName: "static-data-assets",
+      cacheName: 'static-data-assets',
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
-    },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
+    }
   },
   {
     urlPattern: ({ sameOrigin, url: { pathname } }) => {
@@ -142,62 +142,62 @@ const defaultCache: RuntimeCaching[] = [
       // Exclude /api/auth/callback/* to fix OAuth workflow in Safari without having an impact on other environments
       // The above route is the default for next-auth, you may need to change it if your OAuth workflow has a different callback route
       // Issue: https://github.com/shadowwalker/next-pwa/issues/131#issuecomment-821894809
-      if (pathname.startsWith("/api/auth/")) return false;
-      if (pathname.startsWith("/api/")) return true;
+      if (pathname.startsWith('/api/auth/')) return false;
+      if (pathname.startsWith('/api/')) return true;
       return false;
     },
-    handler: "NetworkFirst",
-    method: "GET",
+    handler: 'NetworkFirst',
+    method: 'GET',
     options: {
-      cacheName: "apis",
+      cacheName: 'apis',
       expiration: {
         maxEntries: 16,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
       },
-      networkTimeoutSeconds: 10, // fallback to cache if API does not response within 10 seconds
-    },
+      networkTimeoutSeconds: 10 // fallback to cache if API does not response within 10 seconds
+    }
   },
   {
     urlPattern: ({ request, url: { pathname }, sameOrigin }) =>
-      request.headers.get("RSC") === "1" &&
+      request.headers.get('RSC') === '1' &&
       sameOrigin &&
-      !pathname.startsWith("/api/"),
-    handler: "NetworkFirst",
+      !pathname.startsWith('/api/'),
+    handler: 'NetworkFirst',
     options: {
-      cacheName: "pages-rsc",
+      cacheName: 'pages-rsc',
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
       // matchOptions: {
       //   ignoreVary: true,
       // },
-    },
+    }
   },
   {
     urlPattern: ({ url: { pathname }, sameOrigin }) =>
-      sameOrigin && !pathname.startsWith("/api/"),
-    handler: "NetworkFirst",
+      sameOrigin && !pathname.startsWith('/api/'),
+    handler: 'NetworkFirst',
     options: {
-      cacheName: "pages",
+      cacheName: 'pages',
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
-      },
-    },
+        maxAgeSeconds: 24 * 60 * 60 // 24 hours
+      }
+    }
   },
   {
     urlPattern: ({ sameOrigin }) => !sameOrigin,
-    handler: "NetworkFirst",
+    handler: 'NetworkFirst',
     options: {
-      cacheName: "cross-origin",
+      cacheName: 'cross-origin',
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 60 * 60, // 1 hour
+        maxAgeSeconds: 60 * 60 // 1 hour
       },
-      networkTimeoutSeconds: 10,
-    },
-  },
+      networkTimeoutSeconds: 10
+    }
+  }
 ];
 
 export default defaultCache;
