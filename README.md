@@ -39,11 +39,11 @@ This plugin is powered by [Workbox](https://developer.chrome.com/docs/workbox/) 
 
 ## Setup
 
-See [how to setup `next-pwa`](/packages/next-pwa/SETUP.md)
+See [how to setup `next-pwa`](SETUP.md)
 
 ## Tips
 
-See [our tips on using `next-pwa`](/packages/next-pwa/TIPS.md)
+See [our tips on using `next-pwa`](TIPS.md)
 
 ## Reference
 
