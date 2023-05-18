@@ -3,7 +3,12 @@
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["DOM", "ES6", "ES2017", "ESNext.AsyncIterable"],
+    "lib": [
+      "DOM",
+      "ES6",
+      "ES2017",
+      "ESNext.AsyncIterable"
+    ],
     "skipLibCheck": true,
     "sourceMap": false,
     "strict": true,
@@ -19,5 +24,20 @@
     "checkJs": true,
     "noEmit": true
   },
-  "include": ["*.js", "*.cjs", "*.mjs"]
+  "include": [
+    "globals.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.cjs",
+    "**/*.mjs",
+    "**/.eslintrc.cjs",
+    "**/.ncurc.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "examples"
+  ]
 }

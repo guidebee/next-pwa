@@ -9,7 +9,7 @@ Simply add a `pages/_offline.tsx` file. You are all set! No more configuration n
 You can configure fallback routes for other type of resources
 
 ```js
-const withPWA = require("@ducanh2912/next-pwa").default({
+const withPWA = require("@guidebee/next-pwa").default({
   // ...
   fallbacks: {
     image: "/static/images/fallback.png",

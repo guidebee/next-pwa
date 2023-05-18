@@ -1,4 +1,4 @@
-const withPWA = require("@ducanh2912/next-pwa").default({
+const withPWA = require("@guidebee/next-pwa").default({
   dest: "public",
 });
 

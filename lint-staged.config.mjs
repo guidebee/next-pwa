@@ -1,8 +1,8 @@
-import { ESLint } from "eslint";
-import { quote } from "shell-quote";
+import { ESLint } from 'eslint';
+import { quote } from 'shell-quote';
 
 const eslint = new ESLint();
-const isWin = process.platform === "win32";
+const isWin = process.platform === 'win32';
 
 /**
  * @type {Record<
@@ -11,25 +11,25 @@ const isWin = process.platform === "win32";
  * >}
  */
 export default {
-  "**/*.{js,jsx,cjs,mjs,ts,tsx}": (filenames) => {
+  '**/*.{js,jsx,cjs,mjs,ts,tsx}': (filenames) => {
     const escapedFileNames = filenames
       .map((filename) => (isWin ? filename : escapeStr([filename])))
-      .join(" ");
+      .join(' ');
     return [
       `eslint --fix ${filenames
         .filter(async (file) => !(await eslint.isPathIgnored(file)))
         .map((f) => `"${f}"`)
-        .join(" ")}`,
+        .join(' ')}`,
       `pnpm format ${escapedFileNames}`,
-      `git add ${escapedFileNames}`,
+      `git add ${escapedFileNames}`
     ];
   },
-  "**/*.{json,md,mdx,css,html,yml,yaml,scss}": (filenames) => {
+  '**/*.{json,md,mdx,css,html,yml,yaml,scss}': (filenames) => {
     const escapedFileNames = filenames
       .map((filename) => (isWin ? filename : escapeStr([filename])))
-      .join(" ");
+      .join(' ');
     return [`pnpm format ${escapedFileNames}`, `git add ${escapedFileNames}`];
-  },
+  }
 };
 
 /**
@@ -38,5 +38,5 @@ export default {
  */
 function escapeStr(str) {
   const escaped = quote(str);
-  return escaped.replace(/\\@/g, "@");
+  return escaped.replace(/\\@/g, '@');
 }

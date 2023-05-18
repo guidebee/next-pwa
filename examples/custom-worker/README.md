@@ -17,7 +17,7 @@ In this way, you get the benefit of code splitting and size minimization automat
 You can customize the directory of your custom worker file by adding `customWorkerDir` (relative to `basedir`) to your `withPWAInit` config in `next.config.js`:
 
 ```javascript
-const withPWA = require("@ducanh2912/next-pwa").default({
+const withPWA = require("@guidebee/next-pwa").default({
   customWorkerDir: "serviceworker",
   // ...
 });
@@ -34,7 +34,7 @@ In this example, `next-pwa` will look for `serviceworker/index.ts`.
 Basically you need to create a file (for example, `worker.js`) in your `public` directory, then add `importScripts` to your `withPWAInit` config in `next.config.js`:
 
 ```javascript
-const withPWA = require("@ducanh2912/next-pwa").default({
+const withPWA = require("@guidebee/next-pwa").default({
   dest: "public",
   importScripts: ["/worker.js"],
 });

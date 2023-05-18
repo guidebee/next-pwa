@@ -10,7 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@ducanh2912/next-pwa": "latest",
+    "@guidebee/next-pwa": "file:../..",
     "cross-env": "7.0.3",
     "express": "4.18.2",
     "fastify-compress": "4.1.0",
