@@ -1,6 +1,6 @@
 {
   "name": "nextjs-pwa",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "PWA for Next.js, powered by Workbox.",
   "repository": "https://github.com/guidebee/next-pwa",
